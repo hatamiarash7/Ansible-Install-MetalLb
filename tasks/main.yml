@@ -1,17 +1,24 @@
 ---
 - name: Preparation
   ansible.builtin.shell: "set -o pipefail && kubectl get configmap kube-proxy -n kube-system -o yaml | sed -e 's/strictARP: false/strictARP: true/' | kubectl apply -f - -n kube-system"
+  register: res
+  changed_when: res.rc != 0
 
 - name: Install
   ansible.builtin.shell: |
     kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.12.1/manifests/namespace.yaml
     kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.12.1/manifests/metallb.yaml
     kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+  register: res
+  changed_when: res.rc != 0
 
 - name: Copy config file
   ansible.builtin.template:
     src: config.yml.j2
     dest: /tmp/config.yml
+    mode: "0755"
 
 - name: Configure
   ansible.builtin.shell: kubectl apply -f /tmp/config.yml
+  register: res
+  changed_when: res.rc != 0
