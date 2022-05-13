@@ -53,6 +53,12 @@ jobs:
 
       - name: Check Pod
         uses: "docker://bitnami/kubectl:1.18"
-        id: run-kubectl
         with:
           args: "get pods -n metallb-system"
+
+      - name: Deprovision
+        run: |
+          curl -fLo krucible https://github.com/Krucible/krucible-cli/releases/latest/download/krucible-linux-amd64
+          chmod +x ./krucible
+          krucible set-config --account-id ${{ secrets.KRUCIBLEACCOUNTID }} --api-key-id ${{ secrets.KRUCIBLEAPIKEYID }} --api-key-secret ${{ secrets.KRUCIBLEAPIKEYSECRET }}
+          krucible delete cluster ${{ steps.create-cluster.outputs.cluster-id }}
