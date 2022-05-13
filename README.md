@@ -6,19 +6,27 @@ You can use this role to install [MetalLb](https://metallb.universe.tf/). MetalL
 
 ## How-to
 
+First you need instal the role:
+
 - Clone this role:
 
   ```bash
   git clone git@github.com:hatamiarash7/Ansible-Install-MetalLb.git install_metallb
   ```
 
-- Include role in Playbook:
+- Or you can install using galaxy:
 
-  ```yml
-  - hosts: servers
-      roles:
-          - install_metallb
+  ```bash
+  ansible-galaxy install hatamiarash7.install_metallb
   ```
+
+Then, Include role in Playbook:
+
+```yml
+- hosts: all
+    roles:
+        - hatamiarash7.install_metallb
+```
 
 ## Variables
 
