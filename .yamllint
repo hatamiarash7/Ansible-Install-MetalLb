@@ -1,6 +1,11 @@
 ---
 extends: default
 
+ignore: |
+  .git/
+  .github/
+  .vscode/
+
 rules:
   braces:
     max-spaces-inside: 1
