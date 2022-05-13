@@ -1,6 +1,6 @@
 ---
 - name: Preparation
-  ansible.builtin.shell: "set -o pipefail && kubectl get configmap kube-proxy -n kube-system -o yaml | sed -e 's/strictARP: false/strictARP: true/' | kubectl apply -f - -n kube-system"
+  ansible.builtin.shell: "kubectl get configmap kube-proxy -n kube-system -o yaml | sed -e 's/strictARP: false/strictARP: true/' | kubectl apply -f - -n kube-system"
   register: res
   changed_when: res.rc != 0
 
