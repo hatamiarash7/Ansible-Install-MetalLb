@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/hatamiarash7/pre-commit
+    rev: v1.0.3
+    hooks:
+      - id: ansible_find_unused_variable
+      - id: ansible_find_empty_files
+      - id: ansible_find_empty_directories
+      - id: ansible_fix_readability
+      - id: ansible_find_undefined_handlers

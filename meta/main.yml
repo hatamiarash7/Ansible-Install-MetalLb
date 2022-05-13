@@ -1,0 +1,20 @@
+galaxy_info:
+  role_name: install_metallb
+  author: Arash Hatami
+  namespace: hatamiarash7
+  description: Install MetalLb
+  issue_tracker_url: https://github.com/hatamiarash7/Ansible-Install-MetalLb/issues
+  license: license (GPL-3.0-only)
+  min_ansible_version: "2.9"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - bionic
+  galaxy_tags:
+    - loadbalancer
+    - metallb
+    - cluster
+    - k8s
+    - kubernetes
+dependencies: []

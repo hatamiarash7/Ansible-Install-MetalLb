@@ -1,0 +1,20 @@
+sudo: required
+language: python
+python: "3.8"
+services:
+  - docker
+addons:
+  apt:
+    packages:
+      - python-pip
+install:
+  - pip install ansible ansible-lint molecule[docker,lint]
+script:
+  - molecule test
+notifications:
+  slack:
+    rooms:
+      - secure: Z6t9FOYuK7ap3LyDyjgu7bzJPI5wEgyt6VNjcvoo0qkWmgjIdOgSBmmV8Wj1RBVVyqBT8Z4tcj/diYh2xk9YyhzYZNQY0aLq/IUnKGM6a8AoTHe4+3ZA/sqFJUxLbKIJVACA1FwiA/VbtAYfOBdsuX4BQgh2gb78YdDAEXWVKVSPtm2qctfMfaxWFoZuRtvEsvt8nAoasDEqVDkBRd4b8QHNG3snvWokh6ZP5eK4tvuKtTOZxRupgCGMeJqjgXzDAdVRyiIxsiBJBZHxuqafaFbwCpv6fxIT8t1JwMx9HUVPJ2ugB6uMNkwH/w0KU+MQtl9pwjvX04bMu3wCv+ok/Fs029l1A0ZBuavHuC3tlXvmS5L2gHGC4CtAlaY0i5/KoGayxrX8CyWyM3LG31ipnJo0Mhg/jeSz3mCXnutZVRBO/rEsM9V22lypfavtPfRt35awS3h4yoZyPUzclFb1soacd5/ljgr15ctONGyvaD8pK41YuWp3D/FEFz/uIqF45w/zaaGqywbc6pkHtR+TdlYFju8KJjLPJboOwnkvdf2iIuKNxWWZTvnwDbWe7MgrnIJHW6wjzIxTXe93xpPkqk2V4bQZwSOr9W2iuqls2Dk+xLMLgQaBNZaXawKCM33aefIzyejuEKinF60p5x0/p8y63Jspqd39AuvtCQ/AmPk=
+    on_success: change
+    on_failure: always
+    on_pull_requests: false
