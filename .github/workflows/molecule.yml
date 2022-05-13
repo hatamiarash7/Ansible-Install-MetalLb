@@ -13,7 +13,7 @@ jobs:
     name: Lint ✅
     runs-on: ubuntu-20.04
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           path: "${{ github.repository }}"
@@ -29,13 +29,30 @@ jobs:
     needs:
       - lint
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           path: "${{ github.repository }}"
 
-      - name: molecule
+      - name: Create a kubernetes cluster
+        uses: "Krucible/krucible-github-action@master"
+        id: create-cluster
+        with:
+          duration: 1
+          display-name: ${{ github.repository }}
+          krucible-account-id: ${{ secrets.KRUCIBLEACCOUNTID }}
+          krucible-api-key-id: ${{ secrets.KRUCIBLEAPIKEYID }}
+          krucible-api-key-secret: ${{ secrets.KRUCIBLEAPIKEYSECRET }}
+
+      - name: Molecule
         uses: robertdebock/molecule-action@4.0.8
         with:
           image: "ubuntu"
           options: parallel
           scenario: default
+
+      - name: Check Pod
+        uses: "docker://bitnami/kubectl:1.18"
+        id: run-kubectl
+        with:
+          args: "get pods -n metallb-system"
