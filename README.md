@@ -1,6 +1,6 @@
 # Install MetalLb ( Ansible )
 
-[![Build Status](https://app.travis-ci.com/hatamiarash7/Ansible-Install-MetalLb.svg?branch=main)](https://app.travis-ci.com/hatamiarash7/Ansible-Install-MetalLb) [![Molecule](https://github.com/hatamiarash7/Ansible-Install-MetalLb/actions/workflows/molecule.yml/badge.svg)](https://github.com/hatamiarash7/Ansible-Install-MetalLb/actions/workflows/molecule.yml)
+[![Molecule](https://github.com/hatamiarash7/Ansible-Install-MetalLb/actions/workflows/molecule.yml/badge.svg)](https://github.com/hatamiarash7/Ansible-Install-MetalLb/actions/workflows/molecule.yml)
 
 You can use this role to install [MetalLb](https://metallb.universe.tf/). MetalLB is a load-balancer implementation for bare metal Kubernetes clusters, using standard routing protocols.
 
