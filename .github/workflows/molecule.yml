@@ -19,7 +19,7 @@ jobs:
           path: "${{ github.repository }}"
 
       - name: molecule
-        uses: robertdebock/molecule-action@4.0.8
+        uses: robertdebock/molecule-action@4.0.9
         with:
           command: lint
 
@@ -45,7 +45,7 @@ jobs:
           krucible-api-key-secret: ${{ secrets.KRUCIBLEAPIKEYSECRET }}
 
       - name: Molecule
-        uses: robertdebock/molecule-action@4.0.8
+        uses: robertdebock/molecule-action@4.0.9
         with:
           image: "ubuntu"
           options: parallel
