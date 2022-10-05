@@ -35,7 +35,7 @@ You should have an IP pool for MetalLb. There are two variable here to handle th
 - `ip_pool_first`
 - `ip_pool_last`
 
-**Note :** You can use the same IP for both of them, if you have a single IP for your cluster.
+**Note:** You can use the same IP for both of them, if you have a single IP for your cluster.
 
 ---
 
